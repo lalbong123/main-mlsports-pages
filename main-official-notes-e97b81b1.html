@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>常回来看看 · MK体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #2c3e4f;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* 开头短句 —— 轻柔的空气感 */
+        .opening {
+            margin: 1rem 0 2rem 0;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        .opening p {
+            font-size: 1.25rem;
+            color: #3d5a6b;
+            background: rgba(255, 255, 255, 0.55);
+            padding: 0.4rem 1.5rem;
+            display: inline-block;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        /* 卡片容器 */
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e9edf0;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 24px rgba(0, 20, 30, 0.06);
+        }
+
+        .card-header {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #364f5e;
+            border-bottom: 1px solid #eef2f5;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header span {
+            display: inline-block;
+            width: 5px;
+            height: 18px;
+            background: #7a9aab;
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 450;
+            margin-bottom: 1rem;
+            color: #264653;
+        }
+
+        h3 {
+            font-weight: 450;
+            font-size: 1.15rem;
+            color: #2c4b5a;
+            margin: 1.5rem 0 0.6rem 0;
+        }
+
+        .story-intro p {
+            margin-bottom: 0.9rem;
+        }
+
+        .story-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点列表 — 清新无装饰 */
+        .feature-list {
+            list-style: none;
+            margin: 0.6rem 0 0 0;
+        }
+
+        .feature-list li {
+            padding: 0.7rem 0 0.7rem 1.8rem;
+            position: relative;
+            border-bottom: 1px dashed #e4eaef;
+            font-size: 0.98rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            font-weight: 300;
+            font-size: 1.6rem;
+            color: #7f9bae;
+            line-height: 1.2;
+        }
+
+        .small-note {
+            font-size: 0.9rem;
+            color: #5c7382;
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #edf2f5;
+        }
+
+        .gentle-cta {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 1.5rem 2rem;
+            margin: 0.8rem 0 2rem 0;
+            border: 1px solid #e2e9ef;
+            box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.8), 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .gentle-cta a {
+            color: #2f5b72;
+            text-decoration: none;
+            font-weight: 480;
+            border-bottom: 1px solid #b6ccd9;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .gentle-cta a:hover {
+            border-bottom-color: #2f5b72;
+            color: #1b3f50;
+        }
+
+        .faq-mini {
+            margin: 1.2rem 0 0.2rem 0;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            border-radius: 10px;
+            background: #fafcfd;
+            padding: 0.4rem 1rem;
+            border: 1px solid #e2e8ed;
+            transition: background 0.2s;
+        }
+
+        .faq-mini details[open] {
+            background: #f5f9fc;
+            border-color: #cfdce5;
+        }
+
+        .faq-mini summary {
+            font-weight: 470;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            color: #2d4d5e;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            display: inline-block;
+            width: 1.2rem;
+            color: #7f9aab;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-mini details[open] summary::before {
+            content: "▾";
+            color: #4c6d80;
+        }
+
+        .faq-mini .answer {
+            padding: 0.2rem 0 0.6rem 1.2rem;
+            color: #3b5a6b;
+            font-size: 0.95rem;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 2.5rem 0 1.5rem 0;
+            font-size: 0.95rem;
+            color: #596f7d;
+            border-top: 1px solid #dce4ea;
+            padding-top: 1.8rem;
+            letter-spacing: 0.01em;
+        }
+
+        .closing p {
+            margin: 0.2rem 0;
+        }
+
+        .closing .small-remark {
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 520px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .card {
+                padding: 1.2rem 1.2rem;
+            }
+            .gentle-cta {
+                padding: 1.2rem 1.2rem;
+            }
+            .opening p {
+                font-size: 1.05rem;
+                padding: 0.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+        <p>再次回到这里，像翻开一本常读常新的笔记。</p>
+    </div>
+
+    <!-- 承接段落：再次访问 · 收藏 · 持续关注 -->
+    <div class="card story-intro">
+        <div class="card-header"><span></span> 一次回访，一次温习</div>
+        <p>
+            有些网站值得你放进书签栏，不是因为它喧哗，而是因为它总在需要的时候，递上恰好的内容。
+            <strong>MK体育</strong> 就是这样的存在——你或许最初因为一场赛事、一篇分析而点进来，
+            而后发现，这里的信息节奏温和而扎实，既不急迫，也不缺席。
+        </p>
+        <p>
+            当你再次打开收藏夹，轻轻点开那个名字，熟悉的界面和新近的更新会一起出现。
+            收藏它，不是出于囤积，而是出于一种信任：你知道这里的内容会持续生长，如同一个安静的伙伴。
+        </p>
+    </div>
+
+    <!-- 特点列表：柔和而有层次 -->
+    <div class="card">
+        <div class="card-header"><span></span> 细水长流的理由</div>
+        <ul class="feature-list">
+            <li>内容更新适度，不轰炸视线，每篇都有阅读的余裕</li>
+            <li>语言平实，观点独立，不追逐一时噪点</li>
+            <li>版式干净，不分心，适合慢慢浏览或专注查找</li>
+            <li>长期维护，过往文章依然可查，如同一个微型资料库</li>
+            <li>移动端与桌面阅读体验一致，收藏后随时打开都舒适</li>
+        </ul>
+        <div class="small-note">
+            ★ 持续关注的乐趣，在于看到一座网站如何随时间沉淀出质地。
+        </div>
+    </div>
+
+    <!-- 温和的场景描述 + 自然链接 -->
+    <div class="gentle-cta">
+        <p style="margin-bottom: 0.6rem;">
+            🏸 无论是想快速浏览近期的赛事简报，还是静静翻读某篇深度回顾，
+            <a href="https://main-official-mk.com">MK体育</a> 都保持着一种不打扰的陪伴感。
+            你不需要刻意“跟进”，只需记得它的地址，某个午后或夜晚，自然就会再次打开。
+        </p>
+        <p style="margin-bottom: 0; color: #3c5d6e;">
+            收藏它，就像在窗台放一本常翻的杂志——它不一定在最显眼的位置，但你知道它一直在。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要（温和风格） -->
+    <div class="card faq-mini">
+        <div class="card-header"><span></span> 一些你可能想了解的</div>
+
+        <details>
+            <summary>内容主要涵盖哪些方面？</summary>
+            <div class="answer">以体育赛事观察、队伍动态和项目分析为主，偶尔会涉及运动文化随笔。整体基调偏重信息整合与个人视角，不刻意制造对立话题。</div>
+        </details>
+        <details>
+            <summary>更新频率如何？需要每天刷新吗？</summary>
+            <div class="answer">不必焦虑刷新。通常每周会有 2–4 次更新，遇到大型赛事期间会稍微密集一些。你可以根据自己的节奏回访，内容不会过期太快。</div>
+        </details>
+        <details>
+            <summary>有没有互动或订阅的方式？</summary>
+            <div class="answer">目前主要通过网站本身发布内容。你可以在喜欢的文章页面做简单标记（如浏览器书签），或者偶尔回来看看——这也是我们设计页面时最看重的体验：安静、直接、没有打扰。</div>
+        </details>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #607886;">
+            ⚬ 如果有更多疑问，或许再浏览几次页面，你会发现答案就藏在字里行间。
+        </p>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        <p>感谢你又一次点开这里。</p>
+        <p>收藏夹里的名字，会因为不断回访而变得温暖。</p>
+        <p class="small-remark">— 保持节奏，自在阅读 —</p>
+    </div>
+
+</div>
+</body>
+</html>
